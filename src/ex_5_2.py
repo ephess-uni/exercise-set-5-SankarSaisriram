@@ -21,6 +21,9 @@ if __name__ == "__main__":
     INFILE = root_dir / "data" / "ex_5_2-data.csv"
     OUTFILE = root_dir / "outputs" / "ex_5_2-processed.csv"
 
-    # Complete the data processing steps using numpy here.
+    data = np.loadtxt(INFILE, delimiter=",")
+    data = data - np.mean(data)
+    data_std = np.std(data)
+    processed = data / data_std
 
-    # Save the output to OUTFILE using numpy routines.
+    np.savetxt(OUTFILE, processed, delimiter=",")
